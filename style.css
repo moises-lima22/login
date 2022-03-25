@@ -13,6 +13,11 @@ body {
   background-attachment: fixed;
 }
 
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -64,13 +69,18 @@ h1 {
 }
 
 .label-float label {
-  position: absolute;
-  pointer-events: none;
-  font-size: 16pt;
   color: #6d052c;
+  pointer-events: none;
+  position: absolute;
   top: 0;
   left: 0;
+  margin-top: 13px;
   transition: all 0.3s ease-out;
+}
+
+.label-float input:focus + label {
+  font-size: 9pt;
+  margin-top: 0;
 }
 
 .hr {
@@ -89,8 +99,42 @@ h1 {
   top: 0;
 }
 
+button {
+  width: 100%;
+  padding: 7px;
+  font-weight: bolder;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #6d052c;
+  color: #fff;
+}
 
-button{
-    width: 100%;
-    background-color: transparent;
+button:hover {
+  width: 100%;
+  background-color: #b2144b;
+  color: #fff;
+  border-color: #6d052c;
+  transition: all 0.3s ease-out;
+}
+
+.div-btn {
+  width: 100%;
+}
+
+p {
+  color: #6d052c;
+  font-size: 14pt;
+  text-align: center;
+}
+
+a {
+  color: #6d052c;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+}
+
+a:hover {
+  color: #b2144b;
 }
