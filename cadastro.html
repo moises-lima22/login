@@ -15,25 +15,27 @@
         <div class="card">
             <h1>Entrar</h1>
             <div class="label-float">
-                <input type="text" id="nome" placeholder="" required>
-                <label for="usuario">Nome</label>
+                <input type="text" id="nome" placeholder="" required onkeyup="validaCampo(nome, labelNome,5)">
+                <label id="labelNome" for="usuario" title="Nome">Nome</label>
             </div>
             <div class="label-float">
-                <input type="text" id="usuario" placeholder="" required>
-                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" placeholder="" required onkeyup="validaCampo(usuario, labelUsuario,6)">
+                <label id="labelUsuario" for="usuario" title="Usuário">Usuário</label>
             </div>
             <div class="label-float">
-                <input type="password" id="senha" placeholder="" required>
-                <label for="usuario">Senha</label>
+                <input type="password" id="senha" placeholder="" required onkeyup="validaSenha(senha,labelSenha,8)">
+                <label id="labelSenha" for="usuario" title="Senha">Senha</label>
                 <i class="fa fa-eye" aria-hidden="true" onclick="showPassword(senha)"></i>
             </div>
             <div class="label-float">
-                <input type="password" id="confimarSenha" placeholder="" required>
-                <label for="usuario">Confirmar senha</label>
-                <i class="fa fa-eye" aria-hidden="true" onclick="showPassword(confimarSenha)"></i>
+                <input type="password" id="confirmarSenha" placeholder="" required
+                    onkeyup="comparaSenha(senha,confirmarSenha,labelConfirmarSenha)">
+                <label id="labelConfirmarSenha" for="usuario" title="Confirmar Senha">Confirmar Senha</label>
+                <i class="fa fa-eye" aria-hidden="true" onclick="showPassword(confirmarSenha)"></i>
             </div>
+
             <div class=".justify-center div-btn">
-                <button>Entrar</button>
+                <button onclick="cadastrar()">Cadastrar</button>
             </div>
             <div class="hr">
                 <hr>
