@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/cadastro.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Entrar</h1>
+            <div class="label-float">
+                <input type="text" id="nome" placeholder="" required>
+                <label for="usuario">Nome</label>
+            </div>
+            <div class="label-float">
+                <input type="text" id="usuario" placeholder="" required>
+                <label for="usuario">Usuário</label>
+            </div>
+            <div class="label-float">
+                <input type="password" id="senha" placeholder="" required>
+                <label for="usuario">Senha</label>
+                <i class="fa fa-eye" aria-hidden="true" onclick="showPassword(senha)"></i>
+            </div>
+            <div class="label-float">
+                <input type="password" id="confimarSenha" placeholder="" required>
+                <label for="usuario">Confirmar senha</label>
+                <i class="fa fa-eye" aria-hidden="true" onclick="showPassword(confimarSenha)"></i>
+            </div>
+            <div class=".justify-center div-btn">
+                <button>Entrar</button>
+            </div>
+            <div class="hr">
+                <hr>
+            </div>
+            <p>Já tem uma conta?
+                <a href="./login.html">Logar</a>
+            </p>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
