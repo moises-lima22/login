@@ -1,3 +1,7 @@
+let campoTexto = false;
+let campoSenha = false;
+let senha = false;
+
 function validaCampo(idInput, idLabel, qtdCaracter) {
   let campoLabel = idLabel.title;
   let msg = `${campoLabel} *deve conter no mínimo ${qtdCaracter} letras*`;
@@ -9,6 +13,7 @@ function validaCampo(idInput, idLabel, qtdCaracter) {
   } else {
     formatacao(idInput, idLabel, status, msg);
   }
+  return (this.campoTexto = status);
 }
 
 function validaSenha(idInput, idLabel, qtdCaracter) {
@@ -34,12 +39,14 @@ function validaSenha(idInput, idLabel, qtdCaracter) {
       "style",
       "margin-top: -20px; color: green; font-size:16px"
     );
+    return true;
   } else {
     formatacao(idInput, idLabel, status, msg);
     idLabel.setAttribute(
       "style",
       "margin-top: -20px; color: red; font-size:16px"
     );
+    return false;
   }
 }
 
@@ -49,15 +56,28 @@ function comparaSenha(idInput1, idInput2, idLabel) {
   let status = false;
   let msg = "Confirmar Senha *Senhas não conferem*";
 
-  if (senha1 == senha2) {
+  if (senha1 == senha2 && senha1 != "") {
     status = true;
     formatacao(idInput2, idLabel, status);
+    return true;
   } else {
     formatacao(idInput2, idLabel, status, msg);
+    return false;
   }
 }
 
-function cadastrar() {}
+function validaFormulario(idForm) {
+  let texto = "";
+  let elementoRef = idForm.querySelector(":nth-child(2)");
+
+  if (this.campoTexto && this.campoSenha && this.senha) {
+    texto = "Cadastrando usuário...";
+    idForm.insertBefore(msgSucesso(texto), elementoRef);
+  } else {
+    texto = "Preencha todos os campos corretamente!";
+    idForm.insertBefore(msgErro(texto), elementoRef);
+  }
+}
 
 function showPassword(id) {
   if (id.getAttribute("type") == "password") {
@@ -78,4 +98,25 @@ function formatacao(idInput, idLabel, validacao, texto) {
     idLabel.setAttribute("style", "color: red");
     idLabel.innerHTML = texto;
   }
+}
+
+function msgErro(texto) {
+  let div = document.createElement("div");
+
+  div.setAttribute(
+    "style",
+    "text-align: center; color: #ff0000;  background-color: #ffbbbb; padding: 10px;  border-radius: 4px;  display: block;"
+  );
+  div.innerHTML = texto;
+  return div;
+}
+function msgSucesso(texto) {
+  let div = document.createElement("div");
+
+  div.setAttribute(
+    "style",
+    "text-align: center; color: #00bb00;  background-color: #bbffbe; padding: 10px;  border-radius: 4px;  display: block;"
+  );
+  div.innerHTML = texto;
+  return div;
 }

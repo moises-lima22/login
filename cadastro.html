@@ -12,8 +12,9 @@
 
 <body>
     <div class="container">
-        <div class="card">
+        <form id="formulario" class="card" action="">
             <h1>Entrar</h1>
+            <div id="msg"></div>
             <div class="label-float">
                 <input type="text" id="nome" placeholder="" required onkeyup="validaCampo(nome, labelNome,5)">
                 <label id="labelNome" for="usuario" title="Nome">Nome</label>
@@ -35,7 +36,7 @@
             </div>
 
             <div class=".justify-center div-btn">
-                <button onclick="cadastrar()">Cadastrar</button>
+                <button onclick="validaFormulario(formulario)">Cadastrar</button>
             </div>
             <div class="hr">
                 <hr>
@@ -43,7 +44,7 @@
             <p>Já tem uma conta?
                 <a href="./login.html">Logar</a>
             </p>
-        </div>
+        </form>
     </div>
     <script src="./index.js"></script>
 </body>
