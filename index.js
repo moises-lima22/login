@@ -1,30 +1,30 @@
 let campoTexto = false;
 let campoSenha = false;
-let senha = false;
+let statusSenha = false;
 
-function validaCampo(idInput, idLabel, qtdCaracter) {
+function validaCampoTexto(idInput, idLabel, qtdCaracter) {
   let campoLabel = idLabel.title;
-  let msg = `${campoLabel} *deve conter no mínimo ${qtdCaracter} letras*`;
-  let status = false;
+  let textoErro = `${campoLabel} *deve conter no mínimo ${qtdCaracter} letras*`;
+  let textoSucesso = `${campoLabel}`;
 
-  if (idInput.value.length > qtdCaracter) {
-    status = true;
-    formatacao(idInput, idLabel, status);
+  if (idInput.value.length >= qtdCaracter) {
+    formatacaoSucesso(idInput, idLabel, textoSucesso);
+    this.campoTexto = true;
   } else {
-    formatacao(idInput, idLabel, status, msg);
+    formatacaoErro(idInput, idLabel, textoErro);
+    this.campoTexto = false;
   }
-  return (this.campoTexto = status);
+  return this.campoTexto;
 }
 
-function validaSenha(idInput, idLabel, qtdCaracter) {
+function validaCampoSenha(idInput, idLabel, qtdCaracter) {
   let senha = idInput.value;
   let letrasMaiusculas = /[A-Z]/;
   let letrasMinusculas = /[a-z]/;
   let numeros = /[0-9]/;
   let caracteresEspeciais = /[!|@|#|$|%|^|&|*|(|)|-|_]/;
-  let campoLabel = idLabel.title;
-  let status = false;
-  let msg = `Senha deve ter pelo menos ${qtdCaracter} caracteres e conter pelo menos: uma letra maiúscula, uma letra minúscula e um número.`;
+  let textoErro = `Senha deve ter pelo menos ${qtdCaracter} caracteres e conter pelo menos: uma letra maiúscula, uma letra minúscula e um número.`;
+  let textoSucesso = "Senha";
 
   if (
     letrasMaiusculas.test(senha) &&
@@ -33,36 +33,26 @@ function validaSenha(idInput, idLabel, qtdCaracter) {
     caracteresEspeciais.test(senha) == false &&
     senha.length >= qtdCaracter
   ) {
-    status = true;
-    formatacao(idInput, idLabel, status);
-    idLabel.setAttribute(
-      "style",
-      "margin-top: -20px; color: green; font-size:16px"
-    );
-    return true;
+    formatacaoSucesso(idInput, idLabel, textoSucesso);
+    this.campoSenha = true;
   } else {
-    formatacao(idInput, idLabel, status, msg);
-    idLabel.setAttribute(
-      "style",
-      "margin-top: -20px; color: red; font-size:16px"
-    );
-    return false;
+    formatacaoErro(idInput, idLabel, textoErro);
+    this.campoSenha = false;
   }
 }
 
 function comparaSenha(idInput1, idInput2, idLabel) {
   let senha1 = idInput1.value;
   let senha2 = idInput2.value;
-  let status = false;
-  let msg = "Confirmar Senha *Senhas não conferem*";
+  let textoErro = "Confirmar Senha *Senhas não conferem*";
+  let textoSucesso = "Confirmar Senha";
 
   if (senha1 == senha2 && senha1 != "") {
-    status = true;
-    formatacao(idInput2, idLabel, status);
-    return true;
+    formatacaoSucesso(idInput2, idLabel, textoSucesso);
+    this.statuSenha = true;
   } else {
-    formatacao(idInput2, idLabel, status, msg);
-    return false;
+    formatacaoErro(idInput2, idLabel, textoErro);
+    this.statuSenha = false;
   }
 }
 
@@ -87,17 +77,21 @@ function showPassword(id) {
   }
 }
 
-function formatacao(idInput, idLabel, validacao, texto) {
-  if (validacao) {
-    idInput.setAttribute("style", "color: green");
-    idInput.setAttribute("style", "border-color: green");
-    idLabel.setAttribute("style", "color: green");
-  } else {
-    idInput.setAttribute("style", "color: red");
-    idInput.setAttribute("style", "border-color: red");
-    idLabel.setAttribute("style", "color: red");
-    idLabel.innerHTML = texto;
-  }
+function formatacaoErro(idInput, idLabel, texto) {
+  idInput.setAttribute("style", "color: red; border-color: red");
+  idLabel.setAttribute(
+    "style",
+    "color: red; margin-top: -20px; font-size:16px"
+  );
+  idLabel.innerHTML = texto;
+}
+function formatacaoSucesso(idInput, idLabel, texto) {
+  idInput.setAttribute("style", "color: green; border-color: green");
+  idLabel.setAttribute(
+    "style",
+    "color: green; margin-top: -20px; font-size:16px"
+  );
+  idLabel.innerHTML = texto;
 }
 
 function msgErro(texto) {

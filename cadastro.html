@@ -16,15 +16,15 @@
             <h1>Entrar</h1>
             <div id="msg"></div>
             <div class="label-float">
-                <input type="text" id="nome" placeholder="" required onkeyup="validaCampo(nome, labelNome,5)">
+                <input type="text" id="nome" placeholder="" required onkeyup="validaCampoTexto(nome, labelNome,5)">
                 <label id="labelNome" for="usuario" title="Nome">Nome</label>
             </div>
             <div class="label-float">
-                <input type="text" id="usuario" placeholder="" required onkeyup="validaCampo(usuario, labelUsuario,6)">
+                <input type="text" id="usuario" placeholder="" required onkeyup="validaCampoTexto(usuario, labelUsuario,6)">
                 <label id="labelUsuario" for="usuario" title="Usuário">Usuário</label>
             </div>
             <div class="label-float">
-                <input type="password" id="senha" placeholder="" required onkeyup="validaSenha(senha,labelSenha,8)">
+                <input type="password" id="senha" placeholder="" required onkeyup="validaCampoSenha(senha,labelSenha,8)">
                 <label id="labelSenha" for="usuario" title="Senha">Senha</label>
                 <i class="fa fa-eye" aria-hidden="true" onclick="showPassword(senha)"></i>
             </div>
