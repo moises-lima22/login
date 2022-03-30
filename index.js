@@ -56,17 +56,46 @@ function comparaSenha(idInput1, idInput2, idLabel) {
   }
 }
 
-function validaFormulario(idForm) {
+function cadastrarUsuario() {
   let texto = "";
-  let elementoRef = idForm.querySelector(":nth-child(2)");
-
-  if (this.campoTexto && this.campoSenha && this.senha) {
+  if (validaFormulario()) {
+    let listaUser = conectarLocalStorage();
     texto = "Cadastrando usuário...";
-    idForm.insertBefore(msgSucesso(texto), elementoRef);
+
+    listaUser.push({
+      nome: nome.value,
+      user: usuario.value,
+      senha: senha.value,
+    });
+
+    localStorage.setItem("listaUser", JSON.stringify(listaUser));
+
+    redirecionarPagina("http://127.0.0.1:5500/login.html", 2000);
+    msgSucesso(msg, texto);
   } else {
     texto = "Preencha todos os campos corretamente!";
-    idForm.insertBefore(msgErro(texto), elementoRef);
+    msgErro(msg, texto);
   }
+}
+
+function conectarLocalStorage() {
+  let listaUser = JSON.parse(localStorage.getItem("listaUser") || "[]");
+  return listaUser;
+}
+
+function redirecionarPagina(href, time) {
+  setTimeout(() => {
+    window.location.href = href;
+  }, time);
+}
+
+function validaFormulario() {
+  let statusFormulario = false;
+
+  if (this.campoTexto && this.campoSenha && this.senha) {
+    statusFormulario = true;
+  }
+  return statusFormulario;
 }
 
 function showPassword(id) {
@@ -76,7 +105,6 @@ function showPassword(id) {
     id.setAttribute("type", "password");
   }
 }
-
 function formatacaoErro(idInput, idLabel, texto) {
   idInput.setAttribute("style", "color: red; border-color: red");
   idLabel.setAttribute(
@@ -93,24 +121,17 @@ function formatacaoSucesso(idInput, idLabel, texto) {
   );
   idLabel.innerHTML = texto;
 }
-
-function msgErro(texto) {
-  let div = document.createElement("div");
-
-  div.setAttribute(
+function msgErro(idElemento, texto) {
+  idElemento.setAttribute(
     "style",
     "text-align: center; color: #ff0000;  background-color: #ffbbbb; padding: 10px;  border-radius: 4px;  display: block;"
   );
-  div.innerHTML = texto;
-  return div;
+  idElemento.innerHTML = texto;
 }
-function msgSucesso(texto) {
-  let div = document.createElement("div");
-
-  div.setAttribute(
+function msgSucesso(idElemento, texto) {
+  idElemento.setAttribute(
     "style",
     "text-align: center; color: #00bb00;  background-color: #bbffbe; padding: 10px;  border-radius: 4px;  display: block;"
   );
-  div.innerHTML = texto;
-  return div;
+  idElemento.innerHTML = texto;
 }

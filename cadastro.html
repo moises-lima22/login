@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <form id="formulario" class="card" action="">
+        <div id="formulario" class="card">
             <h1>Entrar</h1>
             <div id="msg"></div>
             <div class="label-float">
@@ -20,11 +20,13 @@
                 <label id="labelNome" for="usuario" title="Nome">Nome</label>
             </div>
             <div class="label-float">
-                <input type="text" id="usuario" placeholder="" required onkeyup="validaCampoTexto(usuario, labelUsuario,6)">
+                <input type="text" id="usuario" placeholder="" required
+                    onkeyup="validaCampoTexto(usuario, labelUsuario,6)">
                 <label id="labelUsuario" for="usuario" title="Usuário">Usuário</label>
             </div>
             <div class="label-float">
-                <input type="password" id="senha" placeholder="" required onkeyup="validaCampoSenha(senha,labelSenha,8)">
+                <input type="password" id="senha" placeholder="" required
+                    onkeyup="validaCampoSenha(senha,labelSenha,8)">
                 <label id="labelSenha" for="usuario" title="Senha">Senha</label>
                 <i class="fa fa-eye" aria-hidden="true" onclick="showPassword(senha)"></i>
             </div>
@@ -36,7 +38,7 @@
             </div>
 
             <div class=".justify-center div-btn">
-                <button onclick="validaFormulario(formulario)">Cadastrar</button>
+                <button onclick="cadastrarUsuario()">Cadastrar</button>
             </div>
             <div class="hr">
                 <hr>
@@ -44,7 +46,7 @@
             <p>Já tem uma conta?
                 <a href="./login.html">Logar</a>
             </p>
-        </form>
+        </div>
     </div>
     <script src="./index.js"></script>
 </body>
